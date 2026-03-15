@@ -1,0 +1,29 @@
+# --- Secrets & Configurations locales ---
+.env
+*.env
+.env.*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environnements virtuels
+venv/
+env/
+ENV/
+.venv/
+
+# --- IDEs / Editeurs ---
+.vscode/
+.idea/
+*.swp
+*.suo
+
+# --- Système d'exploitation ---
+.DS_Store
+Thumbs.db
+
+# --- Docker ---
+# (Rien de spécial si tu ne montes pas de volumes locaux qui créent des fichiers db temporaires)

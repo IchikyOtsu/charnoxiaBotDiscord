@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  discord-bot:
+    build: .
+    container_name: charnoxia-bot
+    restart: always # Redémarre automatiquement si le bot crash ou crash serveur
+    env_file:
+      - .env # Injecte les variables d'environnement dans le conteneur
