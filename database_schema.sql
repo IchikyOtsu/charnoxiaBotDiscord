@@ -74,7 +74,23 @@ INSERT INTO public.banks (id, name, description) VALUES
 ('EXP', 'Guilde des Explorateurs', 'Services monétaires pour les voyageurs de l''extrême.')
 ON CONFLICT DO NOTHING;
 
--- 5. POLITIQUES DE SÉCURITÉ POUR LES IMAGES (STORAGE)
+-- 5. SYSTEME D'INVENTAIRE (ITEMS)
+CREATE TABLE IF NOT EXISTS public.items (
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    name text NOT NULL,
+    description text
+);
+
+CREATE TABLE IF NOT EXISTS public.inventory (
+    user_id bigint NOT NULL,
+    guild_id bigint NOT NULL,
+    item_id uuid REFERENCES public.items(id) ON DELETE CASCADE,
+    quantity integer NOT NULL DEFAULT 1,
+    PRIMARY KEY (user_id, guild_id, item_id),
+    FOREIGN KEY (user_id, guild_id) REFERENCES public.characters(user_id, guild_id) ON DELETE CASCADE
+);
+
+-- 6. POLITIQUES DE SÉCURITÉ POUR LES IMAGES (STORAGE)
 -- Accès complet aux INSERTS/UPDATES pour le dossier "avatars" et "ids" 
 -- (À exécuter uniquement si RLS actif sur les Storage buckets)
 -- CREATE POLICY "Allow public inserts" ON storage.objects FOR INSERT WITH CHECK (bucket_id = 'avatars');

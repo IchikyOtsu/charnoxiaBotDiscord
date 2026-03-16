@@ -30,12 +30,20 @@ class General(commands.Cog):
         )
         embed.add_field(name="💰 Économie & Banques", value=economy_cmds, inline=False)
         
+        # Section Inventaire
+        inventory_cmds = (
+            "**`/inventaire`** - Affiche ton inventaire ou celui d'un membre.\n"
+            "**`/item-list`** - Affiche tous les objets existants dans le monde."
+        )
+        embed.add_field(name="🎒 Inventaire", value=inventory_cmds, inline=False)
+        
         # Section Administration
         admin_cmds = (
             "**`/give-id`** - [Modo] Donne une image de carte d'ID à un membre.\n"
-            "**`/admin-money-add`** - [Admin] Donne des Nox 💠 directement dans la poche d'un membre.\n"
-            "**`/bank-add`** - [Admin] Crée une nouvelle banque officielle.\n"
-            "**`/bank-del`** - [Admin] Supprime une banque (et tous ses comptes)."
+            "**`/admin-money-add`** - [Admin] Donne des Nox 💠 dans la poche d'un membre.\n"
+            "**`/bank-add`** / **`/bank-del`** - [Admin] Gère les banques.\n"
+            "**`/item-add`** / **`/item-del`** - [Admin] Gère les types d'objets.\n"
+            "**`/give-item`** / **`/remove-item`** - [Admin] Donne/Retire un objet à un jour."
         )
         embed.add_field(name="⚙️ Administration", value=admin_cmds, inline=False)
         
